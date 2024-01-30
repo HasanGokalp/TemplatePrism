@@ -6,13 +6,17 @@ Public Class MainScreen
     Implements IModule
 
     Private ReadOnly _regionmanager As IRegionManager
+    Private ReadOnly _chat As ChatService
 
-    Public Sub New(regionmanager As IRegionManager)
+    Public Sub New(regionmanager As IRegionManager, chat As ChatService)
         _regionmanager = regionmanager
+        _chat = chat
+        _chat.deneme()
     End Sub
 
     Public Sub RegisterTypes(containerRegistry As IContainerRegistry) Implements IModule.RegisterTypes
         containerRegistry.Register(Of ViewMain)
+        'containerRegistry.Register(Of ChatService)
         'containerRegistry.RegisterSingleton(Of IRegionManager, RegionManager)()
     End Sub
 
